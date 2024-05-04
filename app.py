@@ -5,6 +5,8 @@ import os
 app = Flask(__name__)
 
 DATABASE_URL = os.environ['DATABASE_URL']  # Environment variable provided by Railway
+if DATABASE_URL is None:
+    raise Exception("DATABASE_URL not set. Please configure the environment variable.")
 
 def get_db():
     if 'db' not in g:
